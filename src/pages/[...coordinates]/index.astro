@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Map from '../../components/Map.jsx';
+
+const { coordinates } = Astro.params;
+let x: number = 0, y: number = 0, z: number = 0;
+
+coordinates?.split('/').forEach((coord, count) => {
+    switch(count){
+        case 0: x = parseFloat(coord); break;
+        case 1: y = parseFloat(coord); break;
+        case 2: z = parseFloat(coord); break;
+    }
+});
+---
+<Layout title="Welcome to Astro.">
+	<main>
+		<h1>OpenStreetMap Reborn</h1>
+		<Map x={x} y={y} z={z} />
+	</main>
+</Layout>
+
+<style>
+
+</style>
